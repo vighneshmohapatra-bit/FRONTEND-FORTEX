@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Zootopia</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="form.css">
+</head>
+
+<body>
+    <form action="#" method="POST">
+        <div class="container1">
+            <h2>Pet Owner Registration</h2>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <input type="text" id="fname" placeholder="First Name" required>
+                    <label for="fname" class="floating-label">First Name</label>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="lname" placeholder="Last Name" required>
+                    <label for="lname" class="floating-label">Last Name</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <input type="email" id="email" placeholder="Email Address" required>
+                <label for="email" class="floating-label">Email Address</label>
+            </div>
+
+            <div class="form-group">
+                <input type="tel" id="phone" placeholder="Phone Number" pattern="[0-9]{10}" maxlength="10" required>
+                <label for="phone" class="floating-label">Phone Number</label>
+            </div>
+
+            <div class="form-group">
+                <input type="text" id="address" placeholder="Address" required>
+                <label for="address" class="floating-label">Address</label>
+            </div>
+
+            <div class="form-group">
+                <input type="date" id="dob" required placeholder=" " style="color: #666;">
+                <label for="dob" class="floating-label"
+                    style="top: -25px; left: 0; font-size: 0.85rem; color: white; font-weight: 600;">Date of
+                    Birth</label>
+            </div>
+
+            <input type="submit" value="Complete Registration">
+
+            <div style="text-align: center; margin-top: 1rem;">
+                <a href="hack1.html"
+                    style="color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.9rem;">Back to Home</a>
+            </div>
+        </div>
+    </form>
+
+    <script>
+        document.querySelector('form').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Set the registration flag
+            localStorage.setItem('isRegistered', 'true');
+
+            // Collect form data (optional for this check, but good for completeness)
+            const formData = {
+                firstName: document.getElementById('fname').value,
+                email: document.getElementById('email').value
+            };
+            localStorage.setItem('userProfile', JSON.stringify(formData));
+
+            // Show Alert
+            alert("Profile Created Successfully! You can now book services.");
+
+            // Redirect to Services
+            window.location.href = 'hack4.html';
+        });
+    </script>
+</body>
+
+</html>

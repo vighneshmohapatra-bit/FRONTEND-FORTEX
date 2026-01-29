@@ -1,0 +1,163 @@
+/* =========================
+   GLOBAL STYLES
+========================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg,
+      #0B1026,
+      #141B3A,
+      #2A1E4F,
+      #4B1D3F);
+  color: #FFFFFF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* =========================
+   TYPOGRAPHY
+========================= */
+h1,
+h2,
+h3 {
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+p {
+  color: #B8C1EC;
+  line-height: 1.6;
+}
+
+/* Gradient text (Heading highlight) */
+.gradient-text {
+  background: linear-gradient(90deg, #F48FB1, #B06CFF);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* =========================
+   CONTAINER & FORM
+========================= */
+.container1 {
+  width: 100%;
+  max-width: 600px;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  padding: 3rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+.form-row {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+  position: relative;
+  width: 100%;
+}
+
+label.floating-label {
+  position: absolute;
+  left: 16px;
+  top: 14px;
+  pointer-events: none;
+  transition: 0.3s ease;
+  color: #B8C1EC;
+  background: transparent;
+  font-size: 0.95rem;
+}
+
+input {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1.5px solid rgba(76, 201, 240, 0.3);
+  /* Cyan tint */
+  border-radius: 12px;
+  background: rgba(20, 27, 58, 0.6);
+  color: white;
+  font-family: inherit;
+  font-size: 1rem;
+  transition: 0.3s ease;
+  outline: none;
+}
+
+input:focus {
+  border-color: #4CC9F0;
+  box-shadow: 0 0 15px rgba(76, 201, 240, 0.2);
+  background: rgba(20, 27, 58, 0.8);
+}
+
+input:focus+.floating-label,
+input:not(:placeholder-shown)+.floating-label {
+  top: -24px;
+  left: 0;
+  font-size: 0.85rem;
+  color: #4CC9F0;
+  font-weight: 500;
+}
+
+input[type="date"] {
+  color: white;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+input[type="submit"],
+.btn-primary {
+  background: linear-gradient(90deg, #F48FB1, #B06CFF);
+  color: #FFFFFF;
+  padding: 14px 28px;
+  border-radius: 999px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  margin-top: 1rem;
+}
+
+input[type="submit"]:hover,
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(176, 108, 255, 0.35);
+}
+
+.btn-outline {
+  background: transparent;
+  color: #4CC9F0;
+  border: 1.5px solid #4CC9F0;
+  padding: 12px 28px;
+  border-radius: 999px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-outline:hover {
+  background: rgba(76, 201, 240, 0.1);
+  color: #7FE5F9;
+}
+
+/* Placeholder fix for floating labels */
+input::placeholder {
+  color: transparent;
+}
