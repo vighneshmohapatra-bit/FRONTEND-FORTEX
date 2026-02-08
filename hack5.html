@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Pet Care - Zootopia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* =========================
+           GLOBAL STYLES (User Styling)
+        ========================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg,
+                    #0B1026,
+                    #141B3A,
+                    #2A1E4F,
+                    #4B1D3F);
+            color: #FFFFFF;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Background Shapes */
+        .shape {
+            position: absolute;
+            filter: blur(80px);
+            z-index: -1;
+            opacity: 0.4;
+            border-radius: 50%;
+        }
+
+        .shape-1 {
+            background: #B06CFF;
+            width: 400px;
+            height: 400px;
+            top: -100px;
+            left: -100px;
+            animation: float 10s infinite;
+        }
+
+        .shape-2 {
+            background: #F48FB1;
+            width: 300px;
+            height: 300px;
+            bottom: -50px;
+            right: -50px;
+            animation: float 14s infinite reverse;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translate(0, 0);
+            }
+
+            50% {
+                transform: translate(30px, 30px);
+            }
+
+            100% {
+                transform: translate(0, 0);
+            }
+        }
+
+        /* =========================
+           FORM CONTAINER
+        ========================= */
+        .container1 {
+            width: 100%;
+            max-width: 500px;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 3rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            animation: slideUp 0.6s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-weight: 600;
+            background: linear-gradient(90deg, #F48FB1, #B06CFF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #B8C1EC;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* =========================
+           INPUTS & SELECTS
+        ========================= */
+        select,
+        input[type="text"] {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1.5px solid rgba(76, 201, 240, 0.3);
+            border-radius: 12px;
+            background: rgba(20, 27, 58, 0.6);
+            color: white;
+            font-family: inherit;
+            font-size: 1rem;
+            outline: none;
+            transition: 0.3s;
+            margin-bottom: 1.5rem;
+            appearance: none;
+            /* Custom arrow for select */
+        }
+
+        /* Custom Dropdown Arrow */
+        .select-wrapper {
+            position: relative;
+        }
+
+        .select-wrapper::after {
+            content: '▼';
+            position: absolute;
+            right: 16px;
+            top: 40%;
+            transform: translateY(-50%);
+            color: #4CC9F0;
+            pointer-events: none;
+            font-size: 0.8rem;
+        }
+
+        select:focus,
+        input[type="text"]:focus {
+            border-color: #4CC9F0;
+            box-shadow: 0 0 15px rgba(76, 201, 240, 0.2);
+            background: rgba(20, 27, 58, 0.8);
+        }
+
+        option {
+            background-color: #141B3A;
+            color: white;
+        }
+
+        /* =========================
+           BUTTONS
+        ========================= */
+        input[type="submit"] {
+            background: linear-gradient(90deg, #F48FB1, #B06CFF);
+            color: #FFFFFF;
+            padding: 14px 28px;
+            border-radius: 999px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        input[type="submit"]:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(176, 108, 255, 0.35);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Decoration -->
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+
+    <form onsubmit="return handleBooking(event)">
+        <div class="container1">
+            <h2>Book Your Service</h2>
+
+            <label>ENTER PET TYPE:</label>
+            <div class="select-wrapper">
+                <select id="petType">
+                    <option>Dog</option>
+                    <option>Cat</option>
+                    <option>Rabbit</option>
+                    <option>Bird</option>
+                </select>
+            </div>
+
+            <label>ENTER BREED:</label>
+            <input type="text" id="breed" placeholder="e.g., Golden Retriever" required>
+
+            <label>ENTER PLAN:</label>
+            <div class="select-wrapper">
+                <select id="plan">
+                    <option>Weekly Plan</option>
+                    <option>Monthly Plan</option>
+                    <option>Daily Plan</option>
+                </select>
+            </div>
+
+            <input type="submit" value="Confirm Booking">
+
+            <div style="text-align: center; margin-top: 1rem;">
+                <a href="hack4.html"
+                    style="color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.9rem;">Back to Services</a>
+            </div>
+        </div>
+    </form>
+
+    <!-- Custom Confirmation Modal -->
+    <div id="confirmModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-icon">✨</div>
+            <h3>Booking Initiated!</h3>
+            <p id="modalText"></p>
+            <p style="color: #4CC9F0; font-size: 0.9rem; margin-top: 1rem;">📧 A confirmation email has been sent to
+                your registered address.</p>
+            <button onclick="proceedToNext()" class="modal-btn">Proceed to Schedule Slot</button>
+        </div>
+    </div>
+
+    <style>
+        /* Modal Styles */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: rgba(20, 27, 58, 0.9);
+            border: 1px solid rgba(76, 201, 240, 0.3);
+            border-radius: 20px;
+            padding: 2.5rem;
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+            box-shadow: 0 0 30px rgba(76, 201, 240, 0.2);
+            animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes popIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .modal-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .modal-btn {
+            margin-top: 1.5rem;
+            background: linear-gradient(90deg, #F48FB1, #B06CFF);
+            padding: 12px 24px;
+            border-radius: 99px;
+            border: none;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .modal-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(176, 108, 255, 0.4);
+        }
+    </style>
+
+    <script>
+        function handleBooking(event) {
+            event.preventDefault();
+
+            const pet = document.getElementById('petType').value;
+            const breed = document.getElementById('breed').value;
+            const plan = document.getElementById('plan').value;
+
+            // Show Modal
+            const modal = document.getElementById('confirmModal');
+            const modalText = document.getElementById('modalText');
+
+            modalText.innerHTML = `Great choice!<br><strong>${pet} (${breed})</strong><br>Plan: <strong>${plan}</strong>`;
+            modal.style.display = 'flex';
+
+            // Simulate Email Sending
+            console.log(`[System] Sending confirmation email to customer for ${plan}...`);
+            console.log("[System] Email sent successfully ✅");
+        }
+
+        function proceedToNext() {
+            window.location.href = 'hack6.html';
+        }
+    </script>
+</body>
+
+</html>
